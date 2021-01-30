@@ -12,8 +12,6 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-import nulltype  # noqa: F401
-
 from openapi_client.model_utils import (  # noqa: F401
     ApiTypeError,
     ModelComposed,
@@ -174,8 +172,8 @@ class LocalObit(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             metadata ([LocalObitMetadata]): Get description from Rohi. [optional]  # noqa: E501
-            documents ([LocalObitDocuments]): To generate this link, take an SHA-256 hash of the document, and link to it as https://www.some-website.com?h1&#x3D;hash-of-document. Note this does not yet adhere to the hashlink standard. . [optional]  # noqa: E501
-            structured_data ([LocalObitStructuredData]): Same as metadata but bigger. Key (string) &#x3D;&gt; Value (string) (hash per line sha256(key + value)). [optional]  # noqa: E501
+            documents ([LocalObitDocuments]): To generate this link, take an SHA-256 hash of the document, and link to it as https://www.some-website.com?h1=hash-of-document. Note this does not yet adhere to the hashlink standard. . [optional]  # noqa: E501
+            structured_data ([LocalObitStructuredData]): Same as metadata but bigger. Key (string) => Value (string) (hash per line sha256(key + value)). [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
