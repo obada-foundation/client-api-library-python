@@ -12,8 +12,8 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from openapi_client.api_client import ApiClient, Endpoint as _Endpoint
-from openapi_client.model_utils import (  # noqa: F401
+from obada_client.api_client import ApiClient, Endpoint as _Endpoint
+from obada_client.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
     date,
@@ -22,12 +22,12 @@ from openapi_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from openapi_client.model.base_response import BaseResponse
-from openapi_client.model.block_chain_obit_response import BlockChainObitResponse
-from openapi_client.model.client_obit_response import ClientObitResponse
-from openapi_client.model.local_obit import LocalObit
-from openapi_client.model.obit_definition_response import ObitDefinitionResponse
-from openapi_client.model.obit_did import ObitDid
+from obada_client.model.base_response import BaseResponse
+from obada_client.model.block_chain_obit_response import BlockChainObitResponse
+from obada_client.model.client_obit_response import ClientObitResponse
+from obada_client.model.local_obit import LocalObit
+from obada_client.model.obit_definition_response import ObitDefinitionResponse
+from obada_client.model.obit_did import ObitDid
 
 
 class ObitApi(object):

@@ -12,10 +12,10 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.obit_definition import ObitDefinition
+import obada_client
+from obada_client.model.obit_definition import ObitDefinition
 globals()['ObitDefinition'] = ObitDefinition
-from openapi_client.model.obit_definition_response import ObitDefinitionResponse
+from obada_client.model.obit_definition_response import ObitDefinitionResponse
 
 
 class TestObitDefinitionResponse(unittest.TestCase):

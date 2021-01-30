@@ -12,8 +12,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.local_obit_structured_data import LocalObitStructuredData
+import obada_client
+from obada_client.model.local_obit_structured_data import LocalObitStructuredData
 
 
 class TestLocalObitStructuredData(unittest.TestCase):

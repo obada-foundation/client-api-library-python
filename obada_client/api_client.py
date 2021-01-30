@@ -21,10 +21,10 @@ from urllib.parse import quote
 from urllib3.fields import RequestField
 
 
-from openapi_client import rest
-from openapi_client.configuration import Configuration
-from openapi_client.exceptions import ApiTypeError, ApiValueError, ApiException
-from openapi_client.model_utils import (
+from obada_client import rest
+from obada_client.configuration import Configuration
+from obada_client.exceptions import ApiTypeError, ApiValueError, ApiException
+from obada_client.model_utils import (
     ModelNormal,
     ModelSimple,
     ModelComposed,

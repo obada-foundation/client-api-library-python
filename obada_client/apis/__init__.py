@@ -14,4 +14,4 @@
 #   sys.setrecursionlimit(n)
 
 # Import APIs into API package:
-from openapi_client.api.obit_api import ObitApi
+from obada_client.api.obit_api import ObitApi

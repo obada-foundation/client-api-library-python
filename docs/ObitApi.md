@@ -1,4 +1,4 @@
-# openapi_client.ObitApi
+# obada_client.ObitApi
 
 All URIs are relative to *http://localhost*
 
@@ -23,20 +23,20 @@ Downloads the Obit information from the blockchain to the client.
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import obit_api
-from openapi_client.model.obit_did import ObitDid
-from openapi_client.model.client_obit_response import ClientObitResponse
+import obada_client
+from obada_client.api import obit_api
+from obada_client.model.client_obit_response import ClientObitResponse
+from obada_client.model.obit_did import ObitDid
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = obada_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
     obit_did = ObitDid(
@@ -49,7 +49,7 @@ with openapi_client.ApiClient() as api_client:
         # Download Obit from Blockchain
         api_response = api_instance.download_obit_from_chain(obit_did=obit_did)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except obada_client.ApiException as e:
         print("Exception when calling ObitApi->download_obit_from_chain: %s\n" % e)
 ```
 
@@ -90,19 +90,19 @@ Retrieves Obit information from blockchain but does not download it.
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import obit_api
-from openapi_client.model.block_chain_obit_response import BlockChainObitResponse
+import obada_client
+from obada_client.api import obit_api
+from obada_client.model.block_chain_obit_response import BlockChainObitResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = obada_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
     obit_did = "did:obada:81413bc1ad2074a6ae35d1f65f64f1bca2e8a20959f37ef0349a729ddc567d9b" # str | Required.
@@ -112,7 +112,7 @@ with openapi_client.ApiClient() as api_client:
         # Get Obit From Blockchain
         api_response = api_instance.fetch_obit_from_chain(obit_did)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except obada_client.ApiException as e:
         print("Exception when calling ObitApi->fetch_obit_from_chain: %s\n" % e)
 ```
 
@@ -153,19 +153,19 @@ Returns the Obit Definition for a given device_id, part_number and serial_number
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import obit_api
-from openapi_client.model.obit_definition_response import ObitDefinitionResponse
+import obada_client
+from obada_client.api import obit_api
+from obada_client.model.obit_definition_response import ObitDefinitionResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = obada_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
     manufacturer = "Apple" # str | Device Id (Required)
@@ -177,7 +177,7 @@ with openapi_client.ApiClient() as api_client:
         # Generate Obit Definition
         api_response = api_instance.generate_obit_def(manufacturer, part_number, serial_number)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except obada_client.ApiException as e:
         print("Exception when calling ObitApi->generate_obit_def: %s\n" % e)
 ```
 
@@ -218,19 +218,19 @@ Get Client Obit
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import obit_api
-from openapi_client.model.client_obit_response import ClientObitResponse
+import obada_client
+from obada_client.api import obit_api
+from obada_client.model.client_obit_response import ClientObitResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = obada_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
     obit_did = "did:obada:81413bc1ad2074a6ae35d1f65f64f1bca2e8a20959f37ef0349a729ddc567d9b" # str | Required.
@@ -240,7 +240,7 @@ with openapi_client.ApiClient() as api_client:
         # Get Client Obit
         api_response = api_instance.get_client_obit(obit_did)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except obada_client.ApiException as e:
         print("Exception when calling ObitApi->get_client_obit: %s\n" % e)
 ```
 
@@ -279,20 +279,20 @@ Save Client Obit
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import obit_api
-from openapi_client.model.local_obit import LocalObit
-from openapi_client.model.client_obit_response import ClientObitResponse
+import obada_client
+from obada_client.api import obit_api
+from obada_client.model.client_obit_response import ClientObitResponse
+from obada_client.model.local_obit import LocalObit
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = obada_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
     local_obit = LocalObit(
@@ -328,7 +328,7 @@ with openapi_client.ApiClient() as api_client:
         # Save Client Obit
         api_response = api_instance.save_client_obit(local_obit=local_obit)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except obada_client.ApiException as e:
         print("Exception when calling ObitApi->save_client_obit: %s\n" % e)
 ```
 
@@ -369,20 +369,20 @@ Uploads Obit from client to the Blockchain
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import obit_api
-from openapi_client.model.obit_did import ObitDid
-from openapi_client.model.base_response import BaseResponse
+import obada_client
+from obada_client.api import obit_api
+from obada_client.model.obit_did import ObitDid
+from obada_client.model.base_response import BaseResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = obada_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
     obit_did = ObitDid(
@@ -395,7 +395,7 @@ with openapi_client.ApiClient() as api_client:
         # Upload Obit to Blockchain
         api_response = api_instance.upload_obit(obit_did=obit_did)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except obada_client.ApiException as e:
         print("Exception when calling ObitApi->upload_obit: %s\n" % e)
 ```
 

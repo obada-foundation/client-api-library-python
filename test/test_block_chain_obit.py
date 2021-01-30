@@ -12,8 +12,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.block_chain_obit import BlockChainObit
+import obada_client
+from obada_client.model.block_chain_obit import BlockChainObit
 
 
 class TestBlockChainObit(unittest.TestCase):

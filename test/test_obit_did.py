@@ -12,8 +12,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.obit_did import ObitDid
+import obada_client
+from obada_client.model.obit_did import ObitDid
 
 
 class TestObitDid(unittest.TestCase):

@@ -12,8 +12,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.base_response import BaseResponse
+import obada_client
+from obada_client.model.base_response import BaseResponse
 
 
 class TestBaseResponse(unittest.TestCase):

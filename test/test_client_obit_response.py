@@ -12,10 +12,10 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.client_obit import ClientObit
+import obada_client
+from obada_client.model.client_obit import ClientObit
 globals()['ClientObit'] = ClientObit
-from openapi_client.model.client_obit_response import ClientObitResponse
+from obada_client.model.client_obit_response import ClientObitResponse
 
 
 class TestClientObitResponse(unittest.TestCase):

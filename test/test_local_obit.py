@@ -12,14 +12,14 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.local_obit_documents import LocalObitDocuments
-from openapi_client.model.local_obit_metadata import LocalObitMetadata
-from openapi_client.model.local_obit_structured_data import LocalObitStructuredData
+import obada_client
+from obada_client.model.local_obit_documents import LocalObitDocuments
+from obada_client.model.local_obit_metadata import LocalObitMetadata
+from obada_client.model.local_obit_structured_data import LocalObitStructuredData
 globals()['LocalObitDocuments'] = LocalObitDocuments
 globals()['LocalObitMetadata'] = LocalObitMetadata
 globals()['LocalObitStructuredData'] = LocalObitStructuredData
-from openapi_client.model.local_obit import LocalObit
+from obada_client.model.local_obit import LocalObit
 
 
 class TestLocalObit(unittest.TestCase):

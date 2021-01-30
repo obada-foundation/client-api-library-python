@@ -12,10 +12,10 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.block_chain_obit import BlockChainObit
+import obada_client
+from obada_client.model.block_chain_obit import BlockChainObit
 globals()['BlockChainObit'] = BlockChainObit
-from openapi_client.model.block_chain_obit_response import BlockChainObitResponse
+from obada_client.model.block_chain_obit_response import BlockChainObitResponse
 
 
 class TestBlockChainObitResponse(unittest.TestCase):

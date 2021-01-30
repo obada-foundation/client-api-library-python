@@ -11,8 +11,8 @@
 
 import unittest
 
-import openapi_client
-from openapi_client.api.obit_api import ObitApi  # noqa: E501
+import obada_client
+from obada_client.api.obit_api import ObitApi  # noqa: E501
 
 
 class TestObitApi(unittest.TestCase):
