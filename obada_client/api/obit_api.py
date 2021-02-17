@@ -108,7 +108,7 @@ class ObitApi(object):
             settings={
                 'response_type': (ClientObitResponse,),
                 'auth': [],
-                'endpoint_path': '/server/obit/download',
+                'endpoint_path': '/api/server/obit/download',
                 'operation_id': 'download_obit_from_chain',
                 'http_method': 'POST',
                 'servers': None,
@@ -224,7 +224,7 @@ class ObitApi(object):
             settings={
                 'response_type': (BlockChainObitResponse,),
                 'auth': [],
-                'endpoint_path': '/server/obit/{obit_did}',
+                'endpoint_path': '/api/server/obit/{obit_did}',
                 'operation_id': 'fetch_obit_from_chain',
                 'http_method': 'GET',
                 'servers': None,
@@ -349,7 +349,7 @@ class ObitApi(object):
             settings={
                 'response_type': (ObitDefinitionResponse,),
                 'auth': [],
-                'endpoint_path': '/obit/generate',
+                'endpoint_path': '/api/obit/generate',
                 'operation_id': 'generate_obit_def',
                 'http_method': 'GET',
                 'servers': None,
@@ -477,7 +477,7 @@ class ObitApi(object):
             settings={
                 'response_type': (ClientObitResponse,),
                 'auth': [],
-                'endpoint_path': '/client/obit/{obit_did}',
+                'endpoint_path': '/api/client/obit/{obit_did}',
                 'operation_id': 'get_client_obit',
                 'http_method': 'GET',
                 'servers': None,
@@ -589,7 +589,7 @@ class ObitApi(object):
             settings={
                 'response_type': (ClientObitResponse,),
                 'auth': [],
-                'endpoint_path': '/client/obit',
+                'endpoint_path': '/api/client/obit',
                 'operation_id': 'save_client_obit',
                 'http_method': 'POST',
                 'servers': None,
@@ -701,7 +701,7 @@ class ObitApi(object):
             settings={
                 'response_type': (BaseResponse,),
                 'auth': [],
-                'endpoint_path': '/server/obit/upload',
+                'endpoint_path': '/api/server/obit/upload',
                 'operation_id': 'upload_obit',
                 'http_method': 'POST',
                 'servers': None,

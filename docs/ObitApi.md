@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**download_obit_from_chain**](ObitApi.md#download_obit_from_chain) | **POST** /server/obit/download | Download Obit from Blockchain
-[**fetch_obit_from_chain**](ObitApi.md#fetch_obit_from_chain) | **GET** /server/obit/{obit_did} | Get Obit From Blockchain
-[**generate_obit_def**](ObitApi.md#generate_obit_def) | **GET** /obit/generate | Generate Obit Definition
-[**get_client_obit**](ObitApi.md#get_client_obit) | **GET** /client/obit/{obit_did} | Get Client Obit
-[**save_client_obit**](ObitApi.md#save_client_obit) | **POST** /client/obit | Save Client Obit
-[**upload_obit**](ObitApi.md#upload_obit) | **POST** /server/obit/upload | Upload Obit to Blockchain
+[**download_obit_from_chain**](ObitApi.md#download_obit_from_chain) | **POST** /api/server/obit/download | Download Obit from Blockchain
+[**fetch_obit_from_chain**](ObitApi.md#fetch_obit_from_chain) | **GET** /api/server/obit/{obit_did} | Get Obit From Blockchain
+[**generate_obit_def**](ObitApi.md#generate_obit_def) | **GET** /api/obit/generate | Generate Obit Definition
+[**get_client_obit**](ObitApi.md#get_client_obit) | **GET** /api/client/obit/{obit_did} | Get Client Obit
+[**save_client_obit**](ObitApi.md#save_client_obit) | **POST** /api/client/obit | Save Client Obit
+[**upload_obit**](ObitApi.md#upload_obit) | **POST** /api/server/obit/upload | Upload Obit to Blockchain
 
 
 # **download_obit_from_chain**
