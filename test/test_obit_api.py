@@ -45,6 +45,13 @@ class TestObitApi(unittest.TestCase):
         """
         pass
 
+    def test_generate_root_hash(self):
+        """Test case for generate_root_hash
+
+        Generates The Root Hash using the data provided.  # noqa: E501
+        """
+        pass
+
     def test_get_client_obit(self):
         """Test case for get_client_obit
 

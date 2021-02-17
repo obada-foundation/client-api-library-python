@@ -21,3 +21,4 @@ from obada_client.model.local_obit_structured_data import LocalObitStructuredDat
 from obada_client.model.obit_definition import ObitDefinition
 from obada_client.model.obit_definition_response import ObitDefinitionResponse
 from obada_client.model.obit_did import ObitDid
+from obada_client.model.root_hash_response import RootHashResponse

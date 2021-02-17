@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**download_obit_from_chain**](ObitApi.md#download_obit_from_chain) | **POST** /api/server/obit/download | Download Obit from Blockchain
 [**fetch_obit_from_chain**](ObitApi.md#fetch_obit_from_chain) | **GET** /api/server/obit/{obit_did} | Get Obit From Blockchain
 [**generate_obit_def**](ObitApi.md#generate_obit_def) | **GET** /api/obit/generate | Generate Obit Definition
+[**generate_root_hash**](ObitApi.md#generate_root_hash) | **POST** /api/obit/hash | Generates The Root Hash using the data provided.
 [**get_client_obit**](ObitApi.md#get_client_obit) | **GET** /api/client/obit/{obit_did} | Get Client Obit
 [**save_client_obit**](ObitApi.md#save_client_obit) | **POST** /api/client/obit | Save Client Obit
 [**upload_obit**](ObitApi.md#upload_obit) | **POST** /api/server/obit/upload | Upload Obit to Blockchain
@@ -206,6 +207,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the Obit Definition |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **generate_root_hash**
+> RootHashResponse generate_root_hash()
+
+Generates The Root Hash using the data provided.
+
+### Example
+
+```python
+import time
+import obada_client
+from obada_client.api import obit_api
+from obada_client.model.local_obit import LocalObit
+from obada_client.model.root_hash_response import RootHashResponse
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = obada_client.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with obada_client.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = obit_api.ObitApi(api_client)
+    local_obit = LocalObit(
+        owner="Tradeloop",
+        obit_status="FUNCTIONAL",
+        manufacturer="Sony",
+        part_number="MWCN2LL/A",
+        serial_number_hash="f6fc84c9f21c24907d6bee6eec38cabab5fa9a7be8c4a7827fe9e56f245bd2d5",
+        metadata=[
+            LocalObitMetadata(
+                key="model",
+                value="Dell R740",
+            ),
+        ],
+        documents=[
+            LocalObitDocuments(
+                name="Link to device wipe report",
+                hashlink="Link to device wipe report",
+            ),
+        ],
+        structured_data=[
+            LocalObitStructuredData(
+                key="model",
+                value="{"somekey":"somevalue"}",
+            ),
+        ],
+        modified_at=dateutil_parser('2020-01-01T13:24:35Z'),
+    ) # LocalObit |  (optional)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Generates The Root Hash using the data provided.
+        api_response = api_instance.generate_root_hash(local_obit=local_obit)
+        pprint(api_response)
+    except obada_client.ApiException as e:
+        print("Exception when calling ObitApi->generate_root_hash: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **local_obit** | [**LocalObit**](LocalObit.md)|  | [optional]
+
+### Return type
+
+[**RootHashResponse**](RootHashResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the root hash |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

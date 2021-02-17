@@ -15,6 +15,7 @@ docs/ObitApi.md
 docs/ObitDefinition.md
 docs/ObitDefinitionResponse.md
 docs/ObitDid.md
+docs/RootHashResponse.md
 git_push.sh
 obada_client/__init__.py
 obada_client/api/__init__.py
@@ -36,6 +37,7 @@ obada_client/model/local_obit_structured_data.py
 obada_client/model/obit_definition.py
 obada_client/model/obit_definition_response.py
 obada_client/model/obit_did.py
+obada_client/model/root_hash_response.py
 obada_client/model_utils.py
 obada_client/models/__init__.py
 obada_client/models/__init__.py
@@ -58,4 +60,5 @@ test/test_obit_api.py
 test/test_obit_definition.py
 test/test_obit_definition_response.py
 test/test_obit_did.py
+test/test_root_hash_response.py
 tox.ini
