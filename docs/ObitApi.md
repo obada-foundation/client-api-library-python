@@ -240,7 +240,7 @@ with obada_client.ApiClient() as api_client:
         obit_status="FUNCTIONAL",
         manufacturer="Sony",
         part_number="MWCN2LL/A",
-        serial_number_hash="f6fc84c9f21c24907d6bee6eec38cabab5fa9a7be8c4a7827fe9e56f245bd2d5",
+        serial_number="123456789",
         metadata=[
             LocalObitMetadata(
                 key="model",
@@ -389,7 +389,7 @@ with obada_client.ApiClient() as api_client:
         obit_status="FUNCTIONAL",
         manufacturer="Sony",
         part_number="MWCN2LL/A",
-        serial_number_hash="f6fc84c9f21c24907d6bee6eec38cabab5fa9a7be8c4a7827fe9e56f245bd2d5",
+        serial_number="123456789",
         metadata=[
             LocalObitMetadata(
                 key="model",

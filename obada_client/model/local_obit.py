@@ -93,7 +93,7 @@ class LocalObit(ModelNormal):
             'obit_status': (str,),  # noqa: E501
             'manufacturer': (str,),  # noqa: E501
             'part_number': (str,),  # noqa: E501
-            'serial_number_hash': (str,),  # noqa: E501
+            'serial_number': (str,),  # noqa: E501
             'modified_at': (datetime,),  # noqa: E501
             'metadata': ([LocalObitMetadata],),  # noqa: E501
             'documents': ([LocalObitDocuments],),  # noqa: E501
@@ -110,7 +110,7 @@ class LocalObit(ModelNormal):
         'obit_status': 'obit_status',  # noqa: E501
         'manufacturer': 'manufacturer',  # noqa: E501
         'part_number': 'part_number',  # noqa: E501
-        'serial_number_hash': 'serial_number_hash',  # noqa: E501
+        'serial_number': 'serial_number',  # noqa: E501
         'modified_at': 'modified_at',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
         'documents': 'documents',  # noqa: E501
@@ -129,7 +129,7 @@ class LocalObit(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, owner, obit_status, manufacturer, part_number, serial_number_hash, modified_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, owner, obit_status, manufacturer, part_number, serial_number, modified_at, *args, **kwargs):  # noqa: E501
         """LocalObit - a model defined in OpenAPI
 
         Args:
@@ -137,7 +137,7 @@ class LocalObit(ModelNormal):
             obit_status (str): Represent available Obit statuses:   - FUNCTIONAL   - NON_FUNCTIONAL   - DISPOSED   - STOLEN   - DISABLED_BY_OWNER 
             manufacturer (str): Waiting more specific details from Rohi
             part_number (str): Manufacturer provided. In cases where no part number is provided for the product, use model, or the most specific ID available from the manufacturer. MWCN2LL/A (an iPhone 11 Pro, Silver, 256GB, model A2160)
-            serial_number_hash (str): Serial number hashed with sha256 hash function
+            serial_number (str): Serial Number
             modified_at (datetime):
 
         Keyword Args:
@@ -203,7 +203,7 @@ class LocalObit(ModelNormal):
         self.obit_status = obit_status
         self.manufacturer = manufacturer
         self.part_number = part_number
-        self.serial_number_hash = serial_number_hash
+        self.serial_number = serial_number
         self.modified_at = modified_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
