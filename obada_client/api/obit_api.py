@@ -350,7 +350,7 @@ class ObitApi(object):
             settings={
                 'response_type': (ObitDefinitionResponse,),
                 'auth': [],
-                'endpoint_path': '/api/obit/generate',
+                'endpoint_path': '/api/obit/definition',
                 'operation_id': 'generate_obit_def',
                 'http_method': 'GET',
                 'servers': None,
