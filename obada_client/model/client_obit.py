@@ -90,9 +90,9 @@ class ClientObit(ModelNormal):
             'serial_number_hash': (str,),  # noqa: E501
             'modified_at': (datetime,),  # noqa: E501
             'root_hash': (str,),  # noqa: E501
-            'metadata': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),  # noqa: E501
-            'documents': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),  # noqa: E501
-            'structured_data': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),  # noqa: E501
+            'metadata': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'documents': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'structured_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
     @cached_property
@@ -172,9 +172,9 @@ class ClientObit(ModelNormal):
             serial_number_hash (str): [optional]  # noqa: E501
             modified_at (datetime): [optional]  # noqa: E501
             root_hash (str): [optional]  # noqa: E501
-            metadata ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): Get description from Rohi. [optional]  # noqa: E501
-            documents ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): To generate this link, take an SHA-256 hash of the document, and link to it as https://www.some-website.com?h1=hash-of-document. Note this does not yet adhere to the hashlink standard. . [optional]  # noqa: E501
-            structured_data ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): Same as metadata but bigger. Key (string) => Value (string) (hash per line sha256(key + value)). [optional]  # noqa: E501
+            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): Get description from Rohi. [optional]  # noqa: E501
+            documents ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): To generate this link, take an SHA-256 hash of the document, and link to it as https://www.some-website.com?h1=hash-of-document. Note this does not yet adhere to the hashlink standard. . [optional]  # noqa: E501
+            structured_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): Same as metadata but bigger. Key (string) => Value (string) (hash per line sha256(key + value)). [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
