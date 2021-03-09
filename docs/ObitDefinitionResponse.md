@@ -1,5 +1,6 @@
 # ObitDefinitionResponse
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

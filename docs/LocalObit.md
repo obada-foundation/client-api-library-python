@@ -1,5 +1,6 @@
 # LocalObit
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,7 @@
 # LocalObitStructuredData
 
 A record that represent key/value structure data record
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

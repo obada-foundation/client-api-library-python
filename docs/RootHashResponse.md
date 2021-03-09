@@ -1,5 +1,6 @@
 # RootHashResponse
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -54,6 +54,7 @@ with obada_client.ApiClient() as api_client:
         print("Exception when calling ObitApi->download_obit_from_chain: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -72,6 +73,7 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -117,6 +119,7 @@ with obada_client.ApiClient() as api_client:
         print("Exception when calling ObitApi->fetch_obit_from_chain: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -135,6 +138,7 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -182,6 +186,7 @@ with obada_client.ApiClient() as api_client:
         print("Exception when calling ObitApi->generate_obit_def: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -202,6 +207,7 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -272,6 +278,7 @@ with obada_client.ApiClient() as api_client:
         print("Exception when calling ObitApi->generate_root_hash: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -290,6 +297,7 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -333,6 +341,7 @@ with obada_client.ApiClient() as api_client:
         print("Exception when calling ObitApi->get_client_obit: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -351,6 +360,7 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -421,6 +431,7 @@ with obada_client.ApiClient() as api_client:
         print("Exception when calling ObitApi->save_client_obit: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -439,6 +450,7 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -488,6 +500,7 @@ with obada_client.ApiClient() as api_client:
         print("Exception when calling ObitApi->upload_obit: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -506,6 +519,7 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

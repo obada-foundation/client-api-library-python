@@ -1,6 +1,7 @@
 # LocalObitMetadata
 
 A record that represent key/value metadata record
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
