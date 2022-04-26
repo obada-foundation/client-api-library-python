@@ -15,9 +15,9 @@ from obada_client.model.block_chain_obit_response import BlockChainObitResponse
 from obada_client.model.client_obit import ClientObit
 from obada_client.model.client_obit_response import ClientObitResponse
 from obada_client.model.local_obit import LocalObit
-from obada_client.model.local_obit_documents import LocalObitDocuments
-from obada_client.model.local_obit_metadata import LocalObitMetadata
-from obada_client.model.local_obit_structured_data import LocalObitStructuredData
+from obada_client.model.local_obit_documents_inner import LocalObitDocumentsInner
+from obada_client.model.local_obit_metadata_inner import LocalObitMetadataInner
+from obada_client.model.local_obit_structured_data_inner import LocalObitStructuredDataInner
 from obada_client.model.obit_definition import ObitDefinition
 from obada_client.model.obit_definition_response import ObitDefinitionResponse
 from obada_client.model.obit_did import ObitDid

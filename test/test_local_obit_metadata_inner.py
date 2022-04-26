@@ -13,11 +13,11 @@ import sys
 import unittest
 
 import obada_client
-from obada_client.model.local_obit_metadata import LocalObitMetadata
+from obada_client.model.local_obit_metadata_inner import LocalObitMetadataInner
 
 
-class TestLocalObitMetadata(unittest.TestCase):
-    """LocalObitMetadata unit test stubs"""
+class TestLocalObitMetadataInner(unittest.TestCase):
+    """LocalObitMetadataInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,10 +25,10 @@ class TestLocalObitMetadata(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testLocalObitMetadata(self):
-        """Test LocalObitMetadata"""
+    def testLocalObitMetadataInner(self):
+        """Test LocalObitMetadataInner"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = LocalObitMetadata()  # noqa: E501
+        # model = LocalObitMetadataInner()  # noqa: E501
         pass
 
 

@@ -10,7 +10,7 @@ For more information, please visit [https://www.obada.io](https://www.obada.io)
 
 ## Requirements.
 
-Python >= 3.6
+Python >=3.6
 
 ## Installation & Usage
 ### pip install
@@ -70,9 +70,7 @@ configuration = obada_client.Configuration(
 with obada_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
-    obit_did = ObitDid(
-        obit_did="did:obada:fe096095-e0f0-4918-9607-6567bd5756b5",
-    ) # ObitDid |  (optional)
+    obit_did = ObitDid(None) # ObitDid |  (optional)
 
     try:
         # Download Obit from Blockchain
@@ -105,9 +103,9 @@ Class | Method | HTTP request | Description
  - [ClientObit](docs/ClientObit.md)
  - [ClientObitResponse](docs/ClientObitResponse.md)
  - [LocalObit](docs/LocalObit.md)
- - [LocalObitDocuments](docs/LocalObitDocuments.md)
- - [LocalObitMetadata](docs/LocalObitMetadata.md)
- - [LocalObitStructuredData](docs/LocalObitStructuredData.md)
+ - [LocalObitDocumentsInner](docs/LocalObitDocumentsInner.md)
+ - [LocalObitMetadataInner](docs/LocalObitMetadataInner.md)
+ - [LocalObitStructuredDataInner](docs/LocalObitStructuredDataInner.md)
  - [ObitDefinition](docs/ObitDefinition.md)
  - [ObitDefinitionResponse](docs/ObitDefinitionResponse.md)
  - [ObitDid](docs/ObitDid.md)

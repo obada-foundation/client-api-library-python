@@ -6,7 +6,7 @@
 # raise a `RecursionError`.
 # In order to avoid this, import only the API that you directly need like:
 #
-#   from .api.obit_api import ObitApi
+#   from obada_client.api.obit_api import ObitApi
 #
 # or import this package, but before doing it, use:
 #

@@ -22,6 +22,7 @@ Downloads the Obit information from the blockchain to the client.
 
 ### Example
 
+
 ```python
 import time
 import obada_client
@@ -40,9 +41,7 @@ configuration = obada_client.Configuration(
 with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
-    obit_did = ObitDid(
-        obit_did="did:obada:fe096095-e0f0-4918-9607-6567bd5756b5",
-    ) # ObitDid |  (optional)
+    obit_did = ObitDid(None) # ObitDid |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -76,6 +75,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the client obit downloaded from blockchain |  -  |
@@ -90,6 +90,7 @@ Get Obit From Blockchain
 Retrieves Obit information from blockchain but does not download it.
 
 ### Example
+
 
 ```python
 import time
@@ -141,6 +142,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Array with ObitDID and USN Information |  -  |
@@ -155,6 +157,7 @@ Generate Obit Definition
 Returns the Obit Definition for a given device_id, part_number and serial_number input.
 
 ### Example
+
 
 ```python
 import time
@@ -210,6 +213,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the Obit Definition |  -  |
@@ -221,7 +225,10 @@ No authorization required
 
 Generates The Root Hash using the data provided.
 
+
+
 ### Example
+
 
 ```python
 import time
@@ -241,32 +248,7 @@ configuration = obada_client.Configuration(
 with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
-    local_obit = LocalObit(
-        owner="Tradeloop",
-        obit_status="FUNCTIONAL",
-        manufacturer="Sony",
-        part_number="MWCN2LL/A",
-        serial_number="123456789",
-        metadata=[
-            LocalObitMetadata(
-                key="model",
-                value="Dell R740",
-            ),
-        ],
-        documents=[
-            LocalObitDocuments(
-                name="Link to device wipe report",
-                hashlink="Link to device wipe report",
-            ),
-        ],
-        structured_data=[
-            LocalObitStructuredData(
-                key="model",
-                value="{"somekey":"somevalue"}",
-            ),
-        ],
-        modified_at=dateutil_parser('2020-01-01T13:24:35Z'),
-    ) # LocalObit |  (optional)
+    local_obit = LocalObit(None) # LocalObit |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -300,6 +282,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the root hash |  -  |
@@ -311,7 +294,10 @@ No authorization required
 
 Get Client Obit
 
+
+
 ### Example
+
 
 ```python
 import time
@@ -363,6 +349,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the obit saved on the client |  -  |
@@ -374,7 +361,10 @@ No authorization required
 
 Save Client Obit
 
+
+
 ### Example
+
 
 ```python
 import time
@@ -394,32 +384,7 @@ configuration = obada_client.Configuration(
 with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
-    local_obit = LocalObit(
-        owner="Tradeloop",
-        obit_status="FUNCTIONAL",
-        manufacturer="Sony",
-        part_number="MWCN2LL/A",
-        serial_number="123456789",
-        metadata=[
-            LocalObitMetadata(
-                key="model",
-                value="Dell R740",
-            ),
-        ],
-        documents=[
-            LocalObitDocuments(
-                name="Link to device wipe report",
-                hashlink="Link to device wipe report",
-            ),
-        ],
-        structured_data=[
-            LocalObitStructuredData(
-                key="model",
-                value="{"somekey":"somevalue"}",
-            ),
-        ],
-        modified_at=dateutil_parser('2020-01-01T13:24:35Z'),
-    ) # LocalObit |  (optional)
+    local_obit = LocalObit(None) # LocalObit |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -453,6 +418,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the obit that was saved |  -  |
@@ -467,6 +433,7 @@ Upload Obit to Blockchain
 Uploads Obit from client to the Blockchain
 
 ### Example
+
 
 ```python
 import time
@@ -486,9 +453,7 @@ configuration = obada_client.Configuration(
 with obada_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
-    obit_did = ObitDid(
-        obit_did="did:obada:fe096095-e0f0-4918-9607-6567bd5756b5",
-    ) # ObitDid |  (optional)
+    obit_did = ObitDid(None) # ObitDid |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -522,6 +487,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns a status of the operation |  -  |

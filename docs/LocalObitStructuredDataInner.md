@@ -1,4 +1,4 @@
-# LocalObitStructuredData
+# LocalObitStructuredDataInner
 
 A record that represent key/value structure data record
 
@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | Structure data key | 
 **value** | **str** | Structure data value as a json string | 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

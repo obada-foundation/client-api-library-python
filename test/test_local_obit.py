@@ -13,12 +13,12 @@ import sys
 import unittest
 
 import obada_client
-from obada_client.model.local_obit_documents import LocalObitDocuments
-from obada_client.model.local_obit_metadata import LocalObitMetadata
-from obada_client.model.local_obit_structured_data import LocalObitStructuredData
-globals()['LocalObitDocuments'] = LocalObitDocuments
-globals()['LocalObitMetadata'] = LocalObitMetadata
-globals()['LocalObitStructuredData'] = LocalObitStructuredData
+from obada_client.model.local_obit_documents_inner import LocalObitDocumentsInner
+from obada_client.model.local_obit_metadata_inner import LocalObitMetadataInner
+from obada_client.model.local_obit_structured_data_inner import LocalObitStructuredDataInner
+globals()['LocalObitDocumentsInner'] = LocalObitDocumentsInner
+globals()['LocalObitMetadataInner'] = LocalObitMetadataInner
+globals()['LocalObitStructuredDataInner'] = LocalObitStructuredDataInner
 from obada_client.model.local_obit import LocalObit
 
 
