@@ -1,56 +1,63 @@
 # obada_client.ObitApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://obs.node.obada.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**download_obit_from_chain**](ObitApi.md#download_obit_from_chain) | **POST** /api/server/obit/download | Download Obit from Blockchain
-[**fetch_obit_from_chain**](ObitApi.md#fetch_obit_from_chain) | **GET** /api/server/obit/{obit_did} | Get Obit From Blockchain
-[**generate_obit_def**](ObitApi.md#generate_obit_def) | **GET** /api/obit/definition | Generate Obit Definition
-[**generate_root_hash**](ObitApi.md#generate_root_hash) | **POST** /api/obit/hash | Generates The Root Hash using the data provided.
-[**get_client_obit**](ObitApi.md#get_client_obit) | **GET** /api/client/obit/{obit_did} | Get Client Obit
-[**save_client_obit**](ObitApi.md#save_client_obit) | **POST** /api/client/obit | Save Client Obit
-[**upload_obit**](ObitApi.md#upload_obit) | **POST** /api/server/obit/upload | Upload Obit to Blockchain
+[**get**](ObitApi.md#get) | **GET** /obits/{key} | Get Obit by DID or USN
+[**history**](ObitApi.md#history) | **GET** /obits/{key}/history | Get Obit history by DID or USN
+[**save**](ObitApi.md#save) | **POST** /obits | Save Obit
+[**search**](ObitApi.md#search) | **GET** /obits | Search obits by query
 
 
-# **download_obit_from_chain**
-> ClientObitResponse download_obit_from_chain()
+# **get**
+> Obit get(key)
 
-Download Obit from Blockchain
+Get Obit by DID or USN
 
-Downloads the Obit information from the blockchain to the client.
+Get a single Obit by given ObitDID or USN
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import time
 import obada_client
 from obada_client.api import obit_api
-from obada_client.model.client_obit_response import ClientObitResponse
-from obada_client.model.obit_did import ObitDid
+from obada_client.model.internal_server_error import InternalServerError
+from obada_client.model.obit import Obit
+from obada_client.model.not_found import NotFound
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://obs.node.obada.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = obada_client.Configuration(
-    host = "http://localhost"
+    host = "http://obs.node.obada.io"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = obada_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
-with obada_client.ApiClient() as api_client:
+with obada_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
-    obit_did = ObitDid(None) # ObitDid |  (optional)
+    key = "did:obada:fe096095-e0f0-4918-9607-6567bd5756b5" # str | The given ObitDID or USN argument
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        # Download Obit from Blockchain
-        api_response = api_instance.download_obit_from_chain(obit_did=obit_did)
+        # Get Obit by DID or USN
+        api_response = api_instance.get(key)
         pprint(api_response)
     except obada_client.ApiException as e:
-        print("Exception when calling ObitApi->download_obit_from_chain: %s\n" % e)
+        print("Exception when calling ObitApi->get: %s\n" % e)
 ```
 
 
@@ -58,82 +65,15 @@ with obada_client.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **obit_did** | [**ObitDid**](ObitDid.md)|  | [optional]
+ **key** | **str**| The given ObitDID or USN argument |
 
 ### Return type
 
-[**ClientObitResponse**](ClientObitResponse.md)
+[**Obit**](Obit.md)
 
 ### Authorization
 
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Returns the client obit downloaded from blockchain |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **fetch_obit_from_chain**
-> BlockChainObitResponse fetch_obit_from_chain(obit_did)
-
-Get Obit From Blockchain
-
-Retrieves Obit information from blockchain but does not download it.
-
-### Example
-
-
-```python
-import time
-import obada_client
-from obada_client.api import obit_api
-from obada_client.model.block_chain_obit_response import BlockChainObitResponse
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = obada_client.Configuration(
-    host = "http://localhost"
-)
-
-
-# Enter a context with an instance of the API client
-with obada_client.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = obit_api.ObitApi(api_client)
-    obit_did = "did:obada:81413bc1ad2074a6ae35d1f65f64f1bca2e8a20959f37ef0349a729ddc567d9b" # str | Required.
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get Obit From Blockchain
-        api_response = api_instance.fetch_obit_from_chain(obit_did)
-        pprint(api_response)
-    except obada_client.ApiException as e:
-        print("Exception when calling ObitApi->fetch_obit_from_chain: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **obit_did** | **str**| Required. |
-
-### Return type
-
-[**BlockChainObitResponse**](BlockChainObitResponse.md)
-
-### Authorization
-
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -145,48 +85,59 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Array with ObitDID and USN Information |  -  |
+**200** |  |  -  |
+**404** | The requested resource could not be found. |  -  |
+**500** | Internal server error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **generate_obit_def**
-> ObitDefinitionResponse generate_obit_def(manufacturer, part_number, serial_number)
+# **history**
+> History200Response history(key)
 
-Generate Obit Definition
+Get Obit history by DID or USN
 
-Returns the Obit Definition for a given device_id, part_number and serial_number input.
+Shows the history of changes by given Obit with ObitDID or USN
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import time
 import obada_client
 from obada_client.api import obit_api
-from obada_client.model.obit_definition_response import ObitDefinitionResponse
+from obada_client.model.history200_response import History200Response
+from obada_client.model.not_found import NotFound
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://obs.node.obada.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = obada_client.Configuration(
-    host = "http://localhost"
+    host = "http://obs.node.obada.io"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = obada_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
-with obada_client.ApiClient() as api_client:
+with obada_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
-    manufacturer = "Apple" # str | Device Id (Required)
-    part_number = "123456789" # str | Part Number (Required)
-    serial_number = "123456789" # str | Serial Number (Required)
+    key = "did:obada:fe096095-e0f0-4918-9607-6567bd5756b5" # str | The given ObitDID or USN argument
 
     # example passing only required values which don't have defaults set
     try:
-        # Generate Obit Definition
-        api_response = api_instance.generate_obit_def(manufacturer, part_number, serial_number)
+        # Get Obit history by DID or USN
+        api_response = api_instance.history(key)
         pprint(api_response)
     except obada_client.ApiException as e:
-        print("Exception when calling ObitApi->generate_obit_def: %s\n" % e)
+        print("Exception when calling ObitApi->history: %s\n" % e)
 ```
 
 
@@ -194,17 +145,15 @@ with obada_client.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **manufacturer** | **str**| Device Id (Required) |
- **part_number** | **str**| Part Number (Required) |
- **serial_number** | **str**| Serial Number (Required) |
+ **key** | **str**| The given ObitDID or USN argument |
 
 ### Return type
 
-[**ObitDefinitionResponse**](ObitDefinitionResponse.md)
+[**History200Response**](History200Response.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -216,48 +165,72 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the Obit Definition |  -  |
+**200** | Collection of historical changes for given obit |  -  |
+**404** | The requested resource could not be found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **generate_root_hash**
-> RootHashResponse generate_root_hash()
+# **save**
+> Obit save()
 
-Generates The Root Hash using the data provided.
+Save Obit
 
-
+Returns Obit with updated checksum if data was changed.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import time
 import obada_client
 from obada_client.api import obit_api
-from obada_client.model.local_obit import LocalObit
-from obada_client.model.root_hash_response import RootHashResponse
+from obada_client.model.save_obit_request import SaveObitRequest
+from obada_client.model.internal_server_error import InternalServerError
+from obada_client.model.obit import Obit
+from obada_client.model.unprocessable_entity import UnprocessableEntity
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://obs.node.obada.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = obada_client.Configuration(
-    host = "http://localhost"
+    host = "http://obs.node.obada.io"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = obada_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
-with obada_client.ApiClient() as api_client:
+with obada_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
-    local_obit = LocalObit(None) # LocalObit |  (optional)
+    save_obit_request = SaveObitRequest(
+        manufacturer="Sony",
+        part_number="MWCN2LL/A",
+        serial_number="f6fc84c9f21c24907d6bee6eec38cabab5fa9a7be8c4a7827fe9e56f245bd2d5",
+        documents=[
+            DeviceDocument(
+                name="Link to device wipe report",
+                document_file="document_file_example",
+                should_encrypt=True,
+            ),
+        ],
+    ) # SaveObitRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # Generates The Root Hash using the data provided.
-        api_response = api_instance.generate_root_hash(local_obit=local_obit)
+        # Save Obit
+        api_response = api_instance.save(save_obit_request=save_obit_request)
         pprint(api_response)
     except obada_client.ApiException as e:
-        print("Exception when calling ObitApi->generate_root_hash: %s\n" % e)
+        print("Exception when calling ObitApi->save: %s\n" % e)
 ```
 
 
@@ -265,19 +238,19 @@ with obada_client.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **local_obit** | [**LocalObit**](LocalObit.md)|  | [optional]
+ **save_obit_request** | [**SaveObitRequest**](SaveObitRequest.md)|  | [optional]
 
 ### Return type
 
-[**RootHashResponse**](RootHashResponse.md)
+[**Obit**](Obit.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json:
  - **Accept**: application/json
 
 
@@ -285,46 +258,61 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the root hash |  -  |
+**200** |  |  -  |
+**422** | The submitted entity could not be processed. |  -  |
+**500** | Internal server error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_client_obit**
-> ClientObitResponse get_client_obit(obit_did)
+# **search**
+> Obits search()
 
-Get Client Obit
+Search obits by query
 
-
+Implements a fulltext search for obits by \"searchTerm\".
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import time
 import obada_client
 from obada_client.api import obit_api
-from obada_client.model.client_obit_response import ClientObitResponse
+from obada_client.model.obits import Obits
+from obada_client.model.internal_server_error import InternalServerError
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://obs.node.obada.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = obada_client.Configuration(
-    host = "http://localhost"
+    host = "http://obs.node.obada.io"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = obada_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
-with obada_client.ApiClient() as api_client:
+with obada_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = obit_api.ObitApi(api_client)
-    obit_did = "did:obada:81413bc1ad2074a6ae35d1f65f64f1bca2e8a20959f37ef0349a729ddc567d9b" # str | Required.
+    q = "fe403a1afe16203f4b8bb3a0e72d3e17567897bc15293e4a87b663e441030aea" # str | Query argument that used for a fulltext search (optional)
+    offset = 0 # int | Number of records to skip for pagination. (optional) if omitted the server will use the default value of 0
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
-        # Get Client Obit
-        api_response = api_instance.get_client_obit(obit_did)
+        # Search obits by query
+        api_response = api_instance.search(q=q, offset=offset)
         pprint(api_response)
     except obada_client.ApiException as e:
-        print("Exception when calling ObitApi->get_client_obit: %s\n" % e)
+        print("Exception when calling ObitApi->search: %s\n" % e)
 ```
 
 
@@ -332,15 +320,16 @@ with obada_client.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **obit_did** | **str**| Required. |
+ **q** | **str**| Query argument that used for a fulltext search | [optional]
+ **offset** | **int**| Number of records to skip for pagination. | [optional] if omitted the server will use the default value of 0
 
 ### Return type
 
-[**ClientObitResponse**](ClientObitResponse.md)
+[**Obits**](Obits.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -352,145 +341,8 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the obit saved on the client |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **save_client_obit**
-> ClientObitResponse save_client_obit()
-
-Save Client Obit
-
-
-
-### Example
-
-
-```python
-import time
-import obada_client
-from obada_client.api import obit_api
-from obada_client.model.client_obit_response import ClientObitResponse
-from obada_client.model.local_obit import LocalObit
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = obada_client.Configuration(
-    host = "http://localhost"
-)
-
-
-# Enter a context with an instance of the API client
-with obada_client.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = obit_api.ObitApi(api_client)
-    local_obit = LocalObit(None) # LocalObit |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Save Client Obit
-        api_response = api_instance.save_client_obit(local_obit=local_obit)
-        pprint(api_response)
-    except obada_client.ApiException as e:
-        print("Exception when calling ObitApi->save_client_obit: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **local_obit** | [**LocalObit**](LocalObit.md)|  | [optional]
-
-### Return type
-
-[**ClientObitResponse**](ClientObitResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Returns the obit that was saved |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **upload_obit**
-> BaseResponse upload_obit()
-
-Upload Obit to Blockchain
-
-Uploads Obit from client to the Blockchain
-
-### Example
-
-
-```python
-import time
-import obada_client
-from obada_client.api import obit_api
-from obada_client.model.obit_did import ObitDid
-from obada_client.model.base_response import BaseResponse
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = obada_client.Configuration(
-    host = "http://localhost"
-)
-
-
-# Enter a context with an instance of the API client
-with obada_client.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = obit_api.ObitApi(api_client)
-    obit_did = ObitDid(None) # ObitDid |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Upload Obit to Blockchain
-        api_response = api_instance.upload_obit(obit_did=obit_did)
-        pprint(api_response)
-    except obada_client.ApiException as e:
-        print("Exception when calling ObitApi->upload_obit: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **obit_did** | [**ObitDid**](ObitDid.md)|  | [optional]
-
-### Return type
-
-[**BaseResponse**](BaseResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Returns a status of the operation |  -  |
+**200** | List of obits with pagination responded by given arguments. |  -  |
+**500** | Internal server error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

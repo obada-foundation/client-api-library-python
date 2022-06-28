@@ -50,71 +50,97 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import time
 import obada_client
 from pprint import pprint
-from obada_client.api import obit_api
-from obada_client.model.base_response import BaseResponse
-from obada_client.model.block_chain_obit_response import BlockChainObitResponse
-from obada_client.model.client_obit_response import ClientObitResponse
-from obada_client.model.local_obit import LocalObit
-from obada_client.model.obit_definition_response import ObitDefinitionResponse
-from obada_client.model.obit_did import ObitDid
-from obada_client.model.root_hash_response import RootHashResponse
-# Defining the host is optional and defaults to http://localhost
+from obada_client.api import accounts_api
+from obada_client.model.account import Account
+from obada_client.model.account_balance import AccountBalance
+from obada_client.model.internal_server_error import InternalServerError
+from obada_client.model.new_account_request import NewAccountRequest
+from obada_client.model.not_authorized import NotAuthorized
+from obada_client.model.unprocessable_entity import UnprocessableEntity
+# Defining the host is optional and defaults to http://obs.node.obada.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = obada_client.Configuration(
-    host = "http://localhost"
+    host = "http://obs.node.obada.io"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = obada_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 
 # Enter a context with an instance of the API client
 with obada_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = obit_api.ObitApi(api_client)
-    obit_did = ObitDid(None) # ObitDid |  (optional)
+    api_instance = accounts_api.AccountsApi(api_client)
 
     try:
-        # Download Obit from Blockchain
-        api_response = api_instance.download_obit_from_chain(obit_did=obit_did)
+        # Shows account balance of OBADA address
+        api_response = api_instance.balance()
         pprint(api_response)
     except obada_client.ApiException as e:
-        print("Exception when calling ObitApi->download_obit_from_chain: %s\n" % e)
+        print("Exception when calling AccountsApi->balance: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://obs.node.obada.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ObitApi* | [**download_obit_from_chain**](docs/ObitApi.md#download_obit_from_chain) | **POST** /api/server/obit/download | Download Obit from Blockchain
-*ObitApi* | [**fetch_obit_from_chain**](docs/ObitApi.md#fetch_obit_from_chain) | **GET** /api/server/obit/{obit_did} | Get Obit From Blockchain
-*ObitApi* | [**generate_obit_def**](docs/ObitApi.md#generate_obit_def) | **GET** /api/obit/definition | Generate Obit Definition
-*ObitApi* | [**generate_root_hash**](docs/ObitApi.md#generate_root_hash) | **POST** /api/obit/hash | Generates The Root Hash using the data provided.
-*ObitApi* | [**get_client_obit**](docs/ObitApi.md#get_client_obit) | **GET** /api/client/obit/{obit_did} | Get Client Obit
-*ObitApi* | [**save_client_obit**](docs/ObitApi.md#save_client_obit) | **POST** /api/client/obit | Save Client Obit
-*ObitApi* | [**upload_obit**](docs/ObitApi.md#upload_obit) | **POST** /api/server/obit/upload | Upload Obit to Blockchain
+*AccountsApi* | [**balance**](docs/AccountsApi.md#balance) | **GET** /accounts/my-balance | Shows account balance of OBADA address
+*AccountsApi* | [**create_account**](docs/AccountsApi.md#create_account) | **POST** /accounts | Creates a new Account
+*NFTApi* | [**mint**](docs/NFTApi.md#mint) | **POST** /nft/{key}/mint | Mints NFT
+*NFTApi* | [**nft**](docs/NFTApi.md#nft) | **GET** /nft/{key} | Fetch NFT from OBADA blockchain Node
+*NFTApi* | [**send**](docs/NFTApi.md#send) | **POST** /nft/{key}/send | Send NFT to another address
+*ObitApi* | [**get**](docs/ObitApi.md#get) | **GET** /obits/{key} | Get Obit by DID or USN
+*ObitApi* | [**history**](docs/ObitApi.md#history) | **GET** /obits/{key}/history | Get Obit history by DID or USN
+*ObitApi* | [**save**](docs/ObitApi.md#save) | **POST** /obits | Save Obit
+*ObitApi* | [**search**](docs/ObitApi.md#search) | **GET** /obits | Search obits by query
+*UtilsApi* | [**generate_checksum**](docs/UtilsApi.md#generate_checksum) | **POST** /obit/checksum | Generates Obit checksum
+*UtilsApi* | [**generate_did**](docs/UtilsApi.md#generate_did) | **POST** /obit/did | Generate Obit DID
 
 
 ## Documentation For Models
 
- - [BaseResponse](docs/BaseResponse.md)
- - [BlockChainObit](docs/BlockChainObit.md)
- - [BlockChainObitResponse](docs/BlockChainObitResponse.md)
- - [ClientObit](docs/ClientObit.md)
- - [ClientObitResponse](docs/ClientObitResponse.md)
- - [LocalObit](docs/LocalObit.md)
- - [LocalObitDocumentsInner](docs/LocalObitDocumentsInner.md)
- - [LocalObitMetadataInner](docs/LocalObitMetadataInner.md)
- - [LocalObitStructuredDataInner](docs/LocalObitStructuredDataInner.md)
- - [ObitDefinition](docs/ObitDefinition.md)
- - [ObitDefinitionResponse](docs/ObitDefinitionResponse.md)
- - [ObitDid](docs/ObitDid.md)
- - [RootHashResponse](docs/RootHashResponse.md)
+ - [Account](docs/Account.md)
+ - [AccountBalance](docs/AccountBalance.md)
+ - [DeviceDocument](docs/DeviceDocument.md)
+ - [Document](docs/Document.md)
+ - [GenerateObitChecksumRequest](docs/GenerateObitChecksumRequest.md)
+ - [GenerateObitChecksumResponse](docs/GenerateObitChecksumResponse.md)
+ - [GenerateObitDIDRequest](docs/GenerateObitDIDRequest.md)
+ - [GenerateObitDIDResponse](docs/GenerateObitDIDResponse.md)
+ - [History200Response](docs/History200Response.md)
+ - [InternalServerError](docs/InternalServerError.md)
+ - [NFT](docs/NFT.md)
+ - [NFTData](docs/NFTData.md)
+ - [NFTDocument](docs/NFTDocument.md)
+ - [NewAccountRequest](docs/NewAccountRequest.md)
+ - [NotAuthorized](docs/NotAuthorized.md)
+ - [NotFound](docs/NotFound.md)
+ - [Obit](docs/Obit.md)
+ - [ObitHistory](docs/ObitHistory.md)
+ - [Obits](docs/Obits.md)
+ - [ObitsMeta](docs/ObitsMeta.md)
+ - [SaveObitRequest](docs/SaveObitRequest.md)
+ - [SendNFTRequest](docs/SendNFTRequest.md)
+ - [UnprocessableEntity](docs/UnprocessableEntity.md)
+ - [UnprocessableEntityFieldsInner](docs/UnprocessableEntityFieldsInner.md)
 
 
 ## Documentation For Authorization
 
- All endpoints do not require authorization.
+
+## bearerAuth
+
+- **Type**: Bearer authentication (JWT)
+
 
 ## Author
 
