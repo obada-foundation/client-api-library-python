@@ -218,7 +218,7 @@ with obada_client.ApiClient(configuration) as api_client:
             DeviceDocument(
                 name="Link to device wipe report",
                 document_file="document_file_example",
-                should_encrypt=True,
+                should_encrypt=False,
             ),
         ],
     ) # SaveObitRequest |  (optional)
