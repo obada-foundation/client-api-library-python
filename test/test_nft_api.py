@@ -45,6 +45,13 @@ class TestNFTApi(unittest.TestCase):
         """
         pass
 
+    def test_update_metadata(self):
+        """Test case for update_metadata
+
+        Update NFT metadata  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
