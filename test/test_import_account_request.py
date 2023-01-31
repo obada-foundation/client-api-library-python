@@ -13,11 +13,11 @@ import sys
 import unittest
 
 import obada_client
-from obada_client.model.new_account_request import NewAccountRequest
+from obada_client.model.import_account_request import ImportAccountRequest
 
 
-class TestNewAccountRequest(unittest.TestCase):
-    """NewAccountRequest unit test stubs"""
+class TestImportAccountRequest(unittest.TestCase):
+    """ImportAccountRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,10 +25,10 @@ class TestNewAccountRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testNewAccountRequest(self):
-        """Test NewAccountRequest"""
+    def testImportAccountRequest(self):
+        """Test ImportAccountRequest"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = NewAccountRequest()  # noqa: E501
+        # model = ImportAccountRequest()  # noqa: E501
         pass
 
 

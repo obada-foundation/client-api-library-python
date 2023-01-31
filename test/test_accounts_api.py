@@ -24,6 +24,20 @@ class TestAccountsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_account(self):
+        """Test case for account
+
+        Fetches an information about single account  # noqa: E501
+        """
+        pass
+
+    def test_accounts(self):
+        """Test case for accounts
+
+        Returns a list of OBADA accounts  # noqa: E501
+        """
+        pass
+
     def test_balance(self):
         """Test case for balance
 
@@ -31,10 +45,73 @@ class TestAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_create_account(self):
-        """Test case for create_account
+    def test_export_account(self):
+        """Test case for export_account
 
-        Creates a new Account  # noqa: E501
+        Export OBADA account (private key) from client-helper  # noqa: E501
+        """
+        pass
+
+    def test_get_mnemonic(self):
+        """Test case for get_mnemonic
+
+        Fetching an existing mnemonic phrase  # noqa: E501
+        """
+        pass
+
+    def test_import_account(self):
+        """Test case for import_account
+
+        Imports an existing OBADA account (private key) to the client-helper user profile  # noqa: E501
+        """
+        pass
+
+    def test_import_wallet(self):
+        """Test case for import_wallet
+
+        Imports an existing HD wallet to the client-helper user profile  # noqa: E501
+        """
+        pass
+
+    def test_new_account(self):
+        """Test case for new_account
+
+        Creates a new OBADA account from HD wallet master key  # noqa: E501
+        """
+        pass
+
+    def test_new_mnemonic(self):
+        """Test case for new_mnemonic
+
+        Generate a new mnemonic phrase for seeding wallet  # noqa: E501
+        """
+        pass
+
+    def test_new_wallet(self):
+        """Test case for new_wallet
+
+        Creates profile HD wallet  # noqa: E501
+        """
+        pass
+
+    def test_register(self):
+        """Test case for register
+
+        Register a new client-helper user profile  # noqa: E501
+        """
+        pass
+
+    def test_send_coins(self):
+        """Test case for send_coins
+
+        Send coins from selected account  # noqa: E501
+        """
+        pass
+
+    def test_update_account(self):
+        """Test case for update_account
+
+        Sets account specific information  # noqa: E501
         """
         pass
 

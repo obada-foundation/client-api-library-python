@@ -53,10 +53,20 @@ from pprint import pprint
 from obada_client.api import accounts_api
 from obada_client.model.account import Account
 from obada_client.model.account_balance import AccountBalance
+from obada_client.model.account_request import AccountRequest
+from obada_client.model.accounts import Accounts
+from obada_client.model.export_account_request import ExportAccountRequest
+from obada_client.model.export_account_response import ExportAccountResponse
+from obada_client.model.import_account_request import ImportAccountRequest
 from obada_client.model.internal_server_error import InternalServerError
-from obada_client.model.new_account_request import NewAccountRequest
+from obada_client.model.mnemonic_request import MnemonicRequest
+from obada_client.model.new_mnemonic import NewMnemonic
 from obada_client.model.not_authorized import NotAuthorized
+from obada_client.model.profile import Profile
+from obada_client.model.register_request import RegisterRequest
+from obada_client.model.send_coins_request import SendCoinsRequest
 from obada_client.model.unprocessable_entity import UnprocessableEntity
+from obada_client.model.wallet_exists_error import WalletExistsError
 # Defining the host is optional and defaults to http://obs.node.obada.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = obada_client.Configuration(
@@ -78,13 +88,14 @@ configuration = obada_client.Configuration(
 with obada_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = accounts_api.AccountsApi(api_client)
+    address = "obada1yxxnd624tgwqm3eyv5smdvjrrydfh9h943qptg" # str | OBADA address
 
     try:
-        # Shows account balance of OBADA address
-        api_response = api_instance.balance()
+        # Fetches an information about single account
+        api_response = api_instance.account(address)
         pprint(api_response)
     except obada_client.ApiException as e:
-        print("Exception when calling AccountsApi->balance: %s\n" % e)
+        print("Exception when calling AccountsApi->account: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -93,8 +104,19 @@ All URIs are relative to *http://obs.node.obada.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountsApi* | [**account**](docs/AccountsApi.md#account) | **GET** /accounts/{address} | Fetches an information about single account
+*AccountsApi* | [**accounts**](docs/AccountsApi.md#accounts) | **GET** /accounts | Returns a list of OBADA accounts
 *AccountsApi* | [**balance**](docs/AccountsApi.md#balance) | **GET** /accounts/my-balance | Shows account balance of OBADA address
-*AccountsApi* | [**create_account**](docs/AccountsApi.md#create_account) | **POST** /accounts | Creates a new Account
+*AccountsApi* | [**export_account**](docs/AccountsApi.md#export_account) | **POST** /accounts/export-account | Export OBADA account (private key) from client-helper
+*AccountsApi* | [**get_mnemonic**](docs/AccountsApi.md#get_mnemonic) | **GET** /accounts/mnemonic | Fetching an existing mnemonic phrase
+*AccountsApi* | [**import_account**](docs/AccountsApi.md#import_account) | **POST** /accounts/import-account | Imports an existing OBADA account (private key) to the client-helper user profile
+*AccountsApi* | [**import_wallet**](docs/AccountsApi.md#import_wallet) | **POST** /accounts/import-wallet | Imports an existing HD wallet to the client-helper user profile
+*AccountsApi* | [**new_account**](docs/AccountsApi.md#new_account) | **POST** /accounts/new-account | Creates a new OBADA account from HD wallet master key
+*AccountsApi* | [**new_mnemonic**](docs/AccountsApi.md#new_mnemonic) | **GET** /accounts/new-mnemonic | Generate a new mnemonic phrase for seeding wallet
+*AccountsApi* | [**new_wallet**](docs/AccountsApi.md#new_wallet) | **POST** /accounts/new-wallet | Creates profile HD wallet
+*AccountsApi* | [**register**](docs/AccountsApi.md#register) | **POST** /accounts/register | Register a new client-helper user profile
+*AccountsApi* | [**send_coins**](docs/AccountsApi.md#send_coins) | **POST** /accounts/{address}/send-coins | Send coins from selected account
+*AccountsApi* | [**update_account**](docs/AccountsApi.md#update_account) | **POST** /accounts/{address} | Sets account specific information
 *NFTApi* | [**mint**](docs/NFTApi.md#mint) | **POST** /nft/{key}/mint | Mints NFT
 *NFTApi* | [**nft**](docs/NFTApi.md#nft) | **GET** /nft/{key} | Fetch NFT from OBADA blockchain Node
 *NFTApi* | [**send**](docs/NFTApi.md#send) | **POST** /nft/{key}/send | Send NFT to another address
@@ -111,28 +133,38 @@ Class | Method | HTTP request | Description
 
  - [Account](docs/Account.md)
  - [AccountBalance](docs/AccountBalance.md)
+ - [AccountRequest](docs/AccountRequest.md)
+ - [Accounts](docs/Accounts.md)
  - [DeviceDocument](docs/DeviceDocument.md)
  - [Document](docs/Document.md)
+ - [ExportAccountRequest](docs/ExportAccountRequest.md)
+ - [ExportAccountResponse](docs/ExportAccountResponse.md)
  - [GenerateObitChecksumRequest](docs/GenerateObitChecksumRequest.md)
  - [GenerateObitChecksumResponse](docs/GenerateObitChecksumResponse.md)
  - [GenerateObitDIDRequest](docs/GenerateObitDIDRequest.md)
  - [GenerateObitDIDResponse](docs/GenerateObitDIDResponse.md)
  - [History200Response](docs/History200Response.md)
+ - [ImportAccountRequest](docs/ImportAccountRequest.md)
  - [InternalServerError](docs/InternalServerError.md)
+ - [MnemonicRequest](docs/MnemonicRequest.md)
  - [NFT](docs/NFT.md)
  - [NFTData](docs/NFTData.md)
  - [NFTDocument](docs/NFTDocument.md)
- - [NewAccountRequest](docs/NewAccountRequest.md)
+ - [NewMnemonic](docs/NewMnemonic.md)
  - [NotAuthorized](docs/NotAuthorized.md)
  - [NotFound](docs/NotFound.md)
  - [Obit](docs/Obit.md)
  - [ObitHistory](docs/ObitHistory.md)
  - [Obits](docs/Obits.md)
  - [ObitsMeta](docs/ObitsMeta.md)
+ - [Profile](docs/Profile.md)
+ - [RegisterRequest](docs/RegisterRequest.md)
  - [SaveObitRequest](docs/SaveObitRequest.md)
+ - [SendCoinsRequest](docs/SendCoinsRequest.md)
  - [SendNFTRequest](docs/SendNFTRequest.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
  - [UnprocessableEntityFieldsInner](docs/UnprocessableEntityFieldsInner.md)
+ - [WalletExistsError](docs/WalletExistsError.md)
 
 
 ## Documentation For Authorization

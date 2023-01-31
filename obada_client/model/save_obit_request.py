@@ -92,6 +92,7 @@ class SaveObitRequest(ModelNormal):
             'part_number': (str,),  # noqa: E501
             'serial_number': (str,),  # noqa: E501
             'documents': ([DeviceDocument],),  # noqa: E501
+            'address': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -104,6 +105,7 @@ class SaveObitRequest(ModelNormal):
         'part_number': 'part_number',  # noqa: E501
         'serial_number': 'serial_number',  # noqa: E501
         'documents': 'documents',  # noqa: E501
+        'address': 'address',  # noqa: E501
     }
 
     read_only_vars = {
@@ -153,6 +155,7 @@ class SaveObitRequest(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             documents ([DeviceDocument]): [optional]  # noqa: E501
+            address (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -247,6 +250,7 @@ class SaveObitRequest(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             documents ([DeviceDocument]): [optional]  # noqa: E501
+            address (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

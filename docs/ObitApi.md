@@ -221,6 +221,7 @@ with obada_client.ApiClient(configuration) as api_client:
                 should_encrypt=False,
             ),
         ],
+        address="address_example",
     ) # SaveObitRequest |  (optional)
 
     # example passing only required values which don't have defaults set
