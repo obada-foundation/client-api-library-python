@@ -52,7 +52,6 @@ import obada_client
 from pprint import pprint
 from obada_client.api import accounts_api
 from obada_client.model.account import Account
-from obada_client.model.account_balance import AccountBalance
 from obada_client.model.account_request import AccountRequest
 from obada_client.model.accounts import Accounts
 from obada_client.model.export_account_request import ExportAccountRequest
@@ -106,7 +105,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**account**](docs/AccountsApi.md#account) | **GET** /accounts/{address} | Fetches an information about single account
 *AccountsApi* | [**accounts**](docs/AccountsApi.md#accounts) | **GET** /accounts | Returns a list of OBADA accounts
-*AccountsApi* | [**balance**](docs/AccountsApi.md#balance) | **GET** /accounts/my-balance | Shows account balance of OBADA address
+*AccountsApi* | [**delete_imported_account**](docs/AccountsApi.md#delete_imported_account) | **DELETE** /accounts/{address} | Delete imported account
 *AccountsApi* | [**export_account**](docs/AccountsApi.md#export_account) | **POST** /accounts/export-account | Export OBADA account (private key) from client-helper
 *AccountsApi* | [**get_mnemonic**](docs/AccountsApi.md#get_mnemonic) | **GET** /accounts/mnemonic | Fetching an existing mnemonic phrase
 *AccountsApi* | [**import_account**](docs/AccountsApi.md#import_account) | **POST** /accounts/import-account | Imports an existing OBADA account (private key) to the client-helper user profile

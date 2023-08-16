@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**account**](AccountsApi.md#account) | **GET** /accounts/{address} | Fetches an information about single account
 [**accounts**](AccountsApi.md#accounts) | **GET** /accounts | Returns a list of OBADA accounts
-[**balance**](AccountsApi.md#balance) | **GET** /accounts/my-balance | Shows account balance of OBADA address
+[**delete_imported_account**](AccountsApi.md#delete_imported_account) | **DELETE** /accounts/{address} | Delete imported account
 [**export_account**](AccountsApi.md#export_account) | **POST** /accounts/export-account | Export OBADA account (private key) from client-helper
 [**get_mnemonic**](AccountsApi.md#get_mnemonic) | **GET** /accounts/mnemonic | Fetching an existing mnemonic phrase
 [**import_account**](AccountsApi.md#import_account) | **POST** /accounts/import-account | Imports an existing OBADA account (private key) to the client-helper user profile
@@ -175,10 +175,10 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **balance**
-> AccountBalance balance()
+# **delete_imported_account**
+> delete_imported_account(address)
 
-Shows account balance of OBADA address
+Delete imported account
 
 ### Example
 
@@ -188,7 +188,6 @@ Shows account balance of OBADA address
 import time
 import obada_client
 from obada_client.api import accounts_api
-from obada_client.model.account_balance import AccountBalance
 from obada_client.model.internal_server_error import InternalServerError
 from obada_client.model.not_authorized import NotAuthorized
 from obada_client.model.unprocessable_entity import UnprocessableEntity
@@ -213,23 +212,26 @@ configuration = obada_client.Configuration(
 with obada_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = accounts_api.AccountsApi(api_client)
+    address = "obada1yxxnd624tgwqm3eyv5smdvjrrydfh9h943qptg" # str | OBADA address
 
-    # example, this endpoint has no required or optional parameters
+    # example passing only required values which don't have defaults set
     try:
-        # Shows account balance of OBADA address
-        api_response = api_instance.balance()
-        pprint(api_response)
+        # Delete imported account
+        api_instance.delete_imported_account(address)
     except obada_client.ApiException as e:
-        print("Exception when calling AccountsApi->balance: %s\n" % e)
+        print("Exception when calling AccountsApi->delete_imported_account: %s\n" % e)
 ```
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **address** | **str**| OBADA address |
 
 ### Return type
 
-[**AccountBalance**](AccountBalance.md)
+void (empty response body)
 
 ### Authorization
 
@@ -245,9 +247,9 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Account balance response |  -  |
-**401** | The request is not authorized. |  -  |
+**204** | Account was deleted |  -  |
 **422** | The submitted entity could not be processed. |  -  |
+**401** | The request is not authorized. |  -  |
 **500** | Internal server error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1093,7 +1095,7 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Account was updated |  -  |
+**204** | Account was updated |  -  |
 **422** | The submitted entity could not be processed. |  -  |
 **401** | The request is not authorized. |  -  |
 **500** | Internal server error. |  -  |

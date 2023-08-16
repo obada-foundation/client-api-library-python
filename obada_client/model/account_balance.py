@@ -82,8 +82,8 @@ class AccountBalance(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'address': (str,),  # noqa: E501
-            'balance': (int,),  # noqa: E501
+            'denom': (str,),  # noqa: E501
+            'amount': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -92,8 +92,8 @@ class AccountBalance(ModelNormal):
 
 
     attribute_map = {
-        'address': 'address',  # noqa: E501
-        'balance': 'balance',  # noqa: E501
+        'denom': 'denom',  # noqa: E501
+        'amount': 'amount',  # noqa: E501
     }
 
     read_only_vars = {
@@ -137,8 +137,8 @@ class AccountBalance(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            address (str): [optional]  # noqa: E501
-            balance (int): [optional]  # noqa: E501
+            denom (str): Denomination unit. [optional]  # noqa: E501
+            amount (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -224,8 +224,8 @@ class AccountBalance(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            address (str): [optional]  # noqa: E501
-            balance (int): [optional]  # noqa: E501
+            denom (str): Denomination unit. [optional]  # noqa: E501
+            amount (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -23,7 +23,6 @@ from obada_client.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from obada_client.model.account import Account
-from obada_client.model.account_balance import AccountBalance
 from obada_client.model.account_request import AccountRequest
 from obada_client.model.accounts import Accounts
 from obada_client.model.export_account_request import ExportAccountRequest
@@ -146,21 +145,24 @@ class AccountsApi(object):
             },
             api_client=api_client
         )
-        self.balance_endpoint = _Endpoint(
+        self.delete_imported_account_endpoint = _Endpoint(
             settings={
-                'response_type': (AccountBalance,),
+                'response_type': None,
                 'auth': [
                     'bearerAuth'
                 ],
-                'endpoint_path': '/accounts/my-balance',
-                'operation_id': 'balance',
-                'http_method': 'GET',
+                'endpoint_path': '/accounts/{address}',
+                'operation_id': 'delete_imported_account',
+                'http_method': 'DELETE',
                 'servers': None,
             },
             params_map={
                 'all': [
+                    'address',
                 ],
-                'required': [],
+                'required': [
+                    'address',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -174,10 +176,14 @@ class AccountsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
+                    'address':
+                        (str,),
                 },
                 'attribute_map': {
+                    'address': 'address',
                 },
                 'location_map': {
+                    'address': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -852,18 +858,21 @@ class AccountsApi(object):
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.accounts_endpoint.call_with_http_info(**kwargs)
 
-    def balance(
+    def delete_imported_account(
         self,
+        address,
         **kwargs
     ):
-        """Shows account balance of OBADA address  # noqa: E501
+        """Delete imported account  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.balance(async_req=True)
+        >>> thread = api.delete_imported_account(address, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            address (str): OBADA address
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -898,7 +907,7 @@ class AccountsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            AccountBalance
+            None
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -927,7 +936,9 @@ class AccountsApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['_request_auths'] = kwargs.get('_request_auths', None)
-        return self.balance_endpoint.call_with_http_info(**kwargs)
+        kwargs['address'] = \
+            address
+        return self.delete_imported_account_endpoint.call_with_http_info(**kwargs)
 
     def export_account(
         self,

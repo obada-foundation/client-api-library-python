@@ -13,6 +13,8 @@ import sys
 import unittest
 
 import obada_client
+from obada_client.model.account_balance import AccountBalance
+globals()['AccountBalance'] = AccountBalance
 from obada_client.model.account import Account
 
 

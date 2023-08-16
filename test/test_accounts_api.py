@@ -38,10 +38,10 @@ class TestAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_balance(self):
-        """Test case for balance
+    def test_delete_imported_account(self):
+        """Test case for delete_imported_account
 
-        Shows account balance of OBADA address  # noqa: E501
+        Delete imported account  # noqa: E501
         """
         pass
 
